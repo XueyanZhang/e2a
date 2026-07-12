@@ -28,6 +28,7 @@ class AgentIdentity(BaseModel):
     AgentIdentity
     """ # noqa: E501
     created_at: datetime
+    deleted_at: Optional[datetime] = None
     domain: StrictStr
     domain_verified: StrictBool
     email: StrictStr
@@ -56,7 +57,7 @@ class AgentIdentity(BaseModel):
     user_id: StrictStr
     webhook_healthy: StrictBool
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["created_at", "domain", "domain_verified", "email", "inbound_7d", "inbound_allowlist", "inbound_policy", "inbound_policy_action", "inbound_scan", "inbound_scan_block_threshold", "inbound_scan_review_threshold", "inbound_scan_sensitivity", "last_delivery_at", "name", "on_expiry", "outbound_7d", "outbound_allowlist", "outbound_policy", "outbound_policy_action", "outbound_scan", "outbound_scan_block_threshold", "outbound_scan_review_threshold", "outbound_scan_sensitivity", "pending_count", "public", "ttl_seconds", "user_id", "webhook_healthy"]
+    __properties: ClassVar[List[str]] = ["created_at", "deleted_at", "domain", "domain_verified", "email", "inbound_7d", "inbound_allowlist", "inbound_policy", "inbound_policy_action", "inbound_scan", "inbound_scan_block_threshold", "inbound_scan_review_threshold", "inbound_scan_sensitivity", "last_delivery_at", "name", "on_expiry", "outbound_7d", "outbound_allowlist", "outbound_policy", "outbound_policy_action", "outbound_scan", "outbound_scan_block_threshold", "outbound_scan_review_threshold", "outbound_scan_sensitivity", "pending_count", "public", "ttl_seconds", "user_id", "webhook_healthy"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -127,6 +128,7 @@ class AgentIdentity(BaseModel):
 
         _obj = cls.model_validate({
             "created_at": obj.get("created_at"),
+            "deleted_at": obj.get("deleted_at"),
             "domain": obj.get("domain"),
             "domain_verified": obj.get("domain_verified"),
             "email": obj.get("email"),
