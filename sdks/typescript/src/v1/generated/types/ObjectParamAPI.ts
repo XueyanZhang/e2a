@@ -1107,7 +1107,7 @@ export interface MessagesApiDeleteMessageRequest {
      */
     id: string
     /**
-     * Permanently delete a message that is already in the trash (irreversible). Requires confirm&#x3D;DELETE.
+     * Permanently delete a message that is already in the trash (irreversible). Requires confirm&#x3D;DELETE and an account-scoped credential.
      * Defaults to: undefined
      * @type boolean
      * @memberof MessagesApideleteMessage
@@ -1116,10 +1116,10 @@ export interface MessagesApiDeleteMessageRequest {
     /**
      * Must be the literal DELETE when permanent&#x3D;true.
      * Defaults to: undefined
-     * @type &#39;DELETE&#39;
+     * @type string
      * @memberof MessagesApideleteMessage
      */
-    confirm?: 'DELETE'
+    confirm?: string
 }
 
 export interface MessagesApiForwardMessageRequest {
